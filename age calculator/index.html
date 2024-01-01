@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        body {
+            font-family: 'Rubik Doodle Shadow', sans-serif;
+            background-image: url('https://bst.icons8.com/wp-content/uploads/2020/02/how-to-create-gradient-article.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-blur: 5px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #calculator {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #2ecc71;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+        }
+
+        #result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: rgb(21, 21, 231),greenyellow;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <h2 style="color: #2c3e50;">Age Calculator</h2>
+        <label for="birthDate">Enter your birthdate:</label>
+        <input type="date" id="birthDate" required>
+        <button onclick="calculateAge()">Calculate Age</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateAge() {
+            var birthDate = new Date(document.getElementById('birthDate').value);
+            var currentDate = new Date();
+
+            var ageInMilliseconds = currentDate - birthDate;
+
+            var years = Math.floor(ageInMilliseconds / (365.25 * 24 * 60 * 60 * 1000));
+            var months = Math.floor((ageInMilliseconds % (365.25 * 24 * 60 * 60 * 1000)) / (30.44 * 24 * 60 * 60 * 1000));
+            var days = Math.floor((ageInMilliseconds % (30.44 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
+            var hours = Math.floor((ageInMilliseconds % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+            var minutes = Math.floor((ageInMilliseconds % (60 * 60 * 1000)) / (60 * 1000));
+            var seconds = Math.floor((ageInMilliseconds % (60 * 1000)) / 1000);
+
+            document.getElementById('result').innerHTML = 'Your age is: ' + years + ' years, ' + months + ' months, ' + days + ' days, ' + hours + ' hours, ' + minutes + ' minutes, and ' + seconds + ' seconds.';
+        }
+    </script>
+</body>
+</html>

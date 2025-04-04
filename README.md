@@ -17,9 +17,7 @@ A simple yet powerful Age Calculator that displays age in **years, months, days,
 
 
 ## 🛠️ Technologies Used
-- **HTML5** – Structure  
-- **CSS3** – Styling & Background  
-- **JavaScript** – Date calculations  
+- **HTML5**   
 
 ## 🎯 How It Works
 1. Enter your birthdate in the input field 📅  
